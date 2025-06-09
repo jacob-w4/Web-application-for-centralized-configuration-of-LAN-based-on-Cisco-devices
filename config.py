@@ -1,16 +1,19 @@
-class Development():
+class Config():
+    # Flask Config
+    PORT = 2888
+
+
+class DevConfig(Config):
     # Flask Config
     DEBUG = True
-    FLASK_PORT = 2888
     HOST = '127.0.0.1'
 
     # Database Config
 
 
-class Live():
+class LiveConfig(Config):
     # Flask Config
     DEBUG = False
-    FLASK_PORT = 2888
     HOST = '0.0.0.0'
 
     # Database Config

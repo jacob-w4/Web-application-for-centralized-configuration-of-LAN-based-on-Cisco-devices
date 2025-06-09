@@ -1,11 +1,13 @@
 from app import create_app
 from config import *
 
-app = create_app()
+# Defining app configurations
+config_class = DevConfig()
 
-config = Development()
+app = create_app(config_class)
+
 
 if __name__ == '__main__':
-    app.run(port=config.FLASK_PORT, 
-            debug=config.DEBUG,
-            host=config.HOST)
+    app.run(port=app.config['PORT'],
+            host=app.config['HOST'],
+            debug=app.config['DEBUG'])
