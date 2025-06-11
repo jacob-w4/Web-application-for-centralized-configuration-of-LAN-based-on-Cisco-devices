@@ -4,6 +4,11 @@ services:
     ports:
       - '5000:5000'
 
+  website:
+    build: ./frontend
+    ports:
+      - "8080:80"     
+
   db:
     image: mysql:latest
     environment:
