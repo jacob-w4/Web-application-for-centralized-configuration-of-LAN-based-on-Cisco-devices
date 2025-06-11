@@ -1,6 +1,6 @@
 class Config():
     # Flask
-    PORT = 2888
+    PORT = 5000
 
 
 class DevConfig(Config):
