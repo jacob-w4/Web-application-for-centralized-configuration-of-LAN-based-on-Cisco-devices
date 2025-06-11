@@ -36,16 +36,26 @@ The application supports both basic (e.g., interface/port configuration, VLAN cr
 
 ## Repository contents
 
-- `app/` – main Flask application directory  
-  - `models/` – ORM model definitions (e.g., User, Device)  
-  - `routes/` – route handlers (API endpoints)  
-  - `utils/` – helper functions (e.g., JWT handling, Netmiko utilities)  
-  - `static/` – static files (JS, CSS, images)  
-  - `__init__.py` – application factory and blueprint registration  
+- `backend/`
+  - `app/` – main Flask application directory  
+    - `models/` – ORM model definitions (e.g., User, Device)  
+    - `routes/` – route handlers (API endpoints)  
+    - `utils/` – helper functions (e.g., JWT handling, Netmiko utilities)  
+    - `static/` – static files (JS, CSS, images)  
+    - `__init__.py` – application factory and blueprint registration  
 
-- `run.py` – entry point to run the Flask server  
-- `config.py` – environment-specific configuration (Dev, Live)  
-- `requirements.txt` – Python dependencies list  
+  - `run.py` – entry point to run the Flask server  
+  - `config.py` – environment-specific configuration (Dev, Live)  
+  - `requirements.txt` – Python dependencies list
+  - `Dockerfile` 
+
+- `frontend/`
+  - `js/`
+  - `static/`
+  - `Dockerfile`
+
+- `docker-compose.yml`
+- `.gitignore`
 
 ---
 
@@ -56,6 +66,15 @@ The application supports both basic (e.g., interface/port configuration, VLAN cr
    git clone https://github.com/jacob-w4/Web-application-for-centralized-configuration-of-LAN-based-on-Cisco-devices.git
    cd Web-application-for-centralized-configuration-of-LAN-based-on-Cisco-devices
    ```
+2. **Prepare .env file**
+  Example file content:
+  ```
+  MYSQL_ROOT_PASSWORD=rootpass123
+  MYSQL_DATABASE=database123
+  MYSQL_USER=user123
+  MYSQL_PASSWORD=pass123
+  ```
 
+3. **Put .env file in the main directory**
 
 
