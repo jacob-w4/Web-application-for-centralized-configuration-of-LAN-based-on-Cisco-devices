@@ -1,19 +1,21 @@
+import os
+from dotenv import find_dotenv, load_dotenv
+
+dotenv_path = find_dotenv()
+load_dotenv(dotenv_path)
+
+
 class Config():
     # Flask
     PORT = 5000
-
-
-class DevConfig(Config):
-    # Flask
     DEBUG = True
     HOST = '127.0.0.1'
 
     # Database
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # Admin credentials
+    AD_USER = os.getenv('ADMIN_USERNAME')
+    AD_PASSW = os.getenv('ADMIN_PASSWORD')
 
-class LiveConfig(Config):
-    # Flask
-    DEBUG = False
-    HOST = '0.0.0.0'
-
-    # Database
