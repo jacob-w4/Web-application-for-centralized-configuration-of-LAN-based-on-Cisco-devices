@@ -9,5 +9,9 @@ def create_app(config_class):
 
     db.init_app(app)
 
+    # Blueprints
+    from .views import views
+    app.register_blueprint(views)
+
     return app
     
