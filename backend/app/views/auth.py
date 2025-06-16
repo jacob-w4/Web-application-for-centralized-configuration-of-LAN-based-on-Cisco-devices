@@ -1,7 +1,9 @@
 from . import views
-from flask import request, jsonify
+from flask import request, jsonify, Blueprint
 from ..models import User
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, create_refresh_token
+
+
 
 @views.route('/login', methods=['POST'])
 def login():
@@ -10,10 +12,10 @@ def login():
 
     user = User.find_by_username(username)
     if user is None or user.check_password(password) is False:
-        return jsonify({'status': 'Authentication failed',
+        return jsonify({'message': 'Authentication failed',
                         'details': 'Invalid username or password'}), 401
     
     access_token = create_access_token(identity=user.username)
 
-    return jsonify({'status': 'Logged In',
+    return jsonify({'message': 'Logged In',
                     'token': access_token}), 200
