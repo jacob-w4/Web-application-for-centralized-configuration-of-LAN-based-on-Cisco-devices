@@ -11,6 +11,9 @@ class Config():
     DEBUG = True
     HOST = '127.0.0.1'
 
+    # Flask JWT
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY') 
+
     # Database
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
