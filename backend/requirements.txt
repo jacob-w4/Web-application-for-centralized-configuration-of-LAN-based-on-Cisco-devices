@@ -3,3 +3,4 @@ flask-sqlalchemy
 netmiko
 python-dotenv
 pymysql
+flask-jwt-extended
