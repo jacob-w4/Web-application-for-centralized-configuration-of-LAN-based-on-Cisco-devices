@@ -15,5 +15,4 @@ with app.app_context():
     admin = User(username=app.config['AD_USER'],
                  password=app.config['AD_PASSW'],
                  permission='admin')
-    db.session.add(admin)
-    db.session.commit()
+    admin.save()
