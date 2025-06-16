@@ -1,7 +1,8 @@
 from app import db
 import datetime
+from .shared import BaseMixin
 
-class Backup(db.Model):
+class Backup(db.Model, BaseMixin):
     __tablename__ = 'backup'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(45), nullable=False)

@@ -1,8 +1,9 @@
 from app import db
+from .shared import BaseMixin
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(db.Model):
+class User(db.Model, BaseMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
@@ -22,6 +23,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+    
+    @classmethod
+    def find_by_username(cls, username):
+        return cls.query.filter_by(username=username).first()
 
     def __repr__(self):
         return '<User %r>' % self.username

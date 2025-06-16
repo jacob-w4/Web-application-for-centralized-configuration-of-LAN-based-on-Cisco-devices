@@ -1,6 +1,7 @@
 from app import db
+from .shared import BaseMixin
 
-class DeviceType(db.Model):
+class DeviceType(db.Model, BaseMixin):
     __tablename__ = 'device_type'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(45), nullable=False)

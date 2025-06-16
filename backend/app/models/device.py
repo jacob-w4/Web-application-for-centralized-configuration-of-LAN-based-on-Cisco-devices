@@ -1,7 +1,8 @@
 from app import db
 import datetime
+from .shared import BaseMixin
 
-class Device(db.Model):
+class Device(db.Model, BaseMixin):
     __tablename__ = 'device'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
