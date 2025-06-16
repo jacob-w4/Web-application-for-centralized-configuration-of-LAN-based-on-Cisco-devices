@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 
+
 db = SQLAlchemy()
 jwt = JWTManager()
 
@@ -14,7 +15,7 @@ def create_app(config_class):
 
     # Blueprints
     from .views import views
-    app.register_blueprint(views)
+    app.register_blueprint(views, url_prefix='/api')
 
     return app
     
