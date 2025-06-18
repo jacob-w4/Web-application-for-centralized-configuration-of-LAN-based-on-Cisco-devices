@@ -1,10 +1,10 @@
 from app import create_app, db
-from config import Config
+from config import config
 from app.models import *
 
 
 
-app = create_app(Config)
+app = create_app(config_class=config['development'])
 
 # Create database structure
 with app.app_context():
