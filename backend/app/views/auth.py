@@ -1,7 +1,7 @@
 from . import views
 from flask import request, jsonify, Blueprint
 from ..models import User
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, create_refresh_token
+from flask_jwt_extended import create_access_token, set_access_cookies, unset_jwt_cookies, jwt_required
 
 
 
@@ -15,7 +15,16 @@ def login():
         return jsonify({'message': 'Authentication failed',
                         'details': 'Invalid username or password'}), 401
     
+    response = jsonify({'message': 'Logged In'})
     access_token = create_access_token(identity=user.username)
+    set_access_cookies(response, access_token)
 
-    return jsonify({'message': 'Logged In',
-                    'token': access_token}), 200
+    return response, 200
+
+
+@views.route('/logout', methods=['POST'])
+def logout():
+    response = jsonify({'message': 'Logged Out'})
+    unset_jwt_cookies(response)
+
+    return response, 200
