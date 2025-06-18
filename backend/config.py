@@ -1,5 +1,6 @@
 import os
 from dotenv import find_dotenv, load_dotenv
+from datetime import timedelta
 
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
@@ -13,6 +14,8 @@ class Config():
 
     # Flask JWT
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY') 
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=5)
+    JWT_TOKEN_LOCATION = 'cookies'
 
     # Database
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
@@ -22,3 +25,25 @@ class Config():
     AD_USER = os.getenv('ADMIN_USERNAME')
     AD_PASSW = os.getenv('ADMIN_PASSWORD')
 
+    # Cookies
+    JWT_COOKIE_HTTPONLY = True
+    JWT_COOKIE_SAMESITE = 'Strict'
+
+
+
+class DevelopmentConfig(Config):
+    # Cookies
+    JWT_COOKIE_SECURE = False
+
+
+
+class ProductionConfig(Config):
+    # Cookies
+    JWT_COOKIE_SECURE = True
+
+
+
+config = {
+    'development': DevelopmentConfig,
+    'production': ProductionConfig
+}
