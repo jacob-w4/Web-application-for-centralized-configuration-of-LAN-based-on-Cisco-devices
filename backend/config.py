@@ -10,15 +10,14 @@ class Config():
     # Flask
     PORT = 5000
     DEBUG = True
-    HOST = '127.0.0.1'
 
     # Flask JWT
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY') 
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=5)
-    JWT_TOKEN_LOCATION = 'cookies'
+    JWT_TOKEN_LOCATION = ['cookies']
+    JWT_ACCESS_COOKIE_PATH = "/"
 
     # Database
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Admin credentials
@@ -27,19 +26,27 @@ class Config():
 
     # Cookies
     JWT_COOKIE_HTTPONLY = True
-    JWT_COOKIE_SAMESITE = 'Strict'
+    JWT_COOKIE_SAMESITE = 'None'
+    JWT_COOKIE_SECURE = True
+
 
 
 
 class DevelopmentConfig(Config):
-    # Cookies
-    JWT_COOKIE_SECURE = False
+    # Flask
+    HOST = '127.0.0.1'
+
+    # Database
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 
 class ProductionConfig(Config):
-    # Cookies
-    JWT_COOKIE_SECURE = True
+    # Flask
+    HOST = '0.0.0.0'
+
+    # Database
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL_DOCKER')
 
 
 
