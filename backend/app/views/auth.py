@@ -7,15 +7,15 @@ from flask_jwt_extended import create_access_token, set_access_cookies, unset_jw
 
 @views.route('/login', methods=['POST'])
 def login():
-    username = request.form.get('username')
-    password = request.form.get('password')
+    username = request.json.get('username')
+    password = request.json.get('password')
 
     user = User.find_by_username(username)
     if user is None or user.check_password(password) is False:
-        return jsonify({'message': 'Authentication failed',
+        return jsonify({'msg': 'Authentication failed',
                         'details': 'Invalid username or password'}), 401
     
-    response = jsonify({'message': 'Logged In'})
+    response = jsonify({'msg': 'Logged In'})
     access_token = create_access_token(identity=user.username)
     set_access_cookies(response, access_token)
 
@@ -24,7 +24,7 @@ def login():
 
 @views.route('/logout', methods=['POST'])
 def logout():
-    response = jsonify({'message': 'Logged Out'})
+    response = jsonify({'msg': 'Logged Out'})
     unset_jwt_cookies(response)
 
     return response, 200
