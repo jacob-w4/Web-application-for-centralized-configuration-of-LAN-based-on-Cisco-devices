@@ -4,3 +4,4 @@ netmiko
 python-dotenv
 pymysql
 flask-jwt-extended
+flask-cors
