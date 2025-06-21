@@ -15,5 +15,12 @@ class Device(db.Model, BaseMixin):
     backups = db.relationship('Backup', backref='device')
     user_devices = db.relationship('UserDevice', back_populates='device')
 
+    def __init__(self, name, ipv4_address, ipv6_address, description, model):
+        self.name = name
+        self.ipv4_address = ipv4_address
+        self.ipv6_address = ipv6_address
+        self.description = description
+        self.model = model
+
     def __repr__(self):
         return '<Device name %r>' % self.name
