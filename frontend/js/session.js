@@ -1,4 +1,5 @@
 async function check_session() {
+  try {
     const response = await fetch(`${window.CONFIG.API_URL}/me`, {
       method: 'GET',
       headers: {
@@ -18,6 +19,11 @@ async function check_session() {
         users_div.classList.replace('hidden', 'flex')
       }
     }
+  } catch (error) {
+    console.error('Błąd logowania:', error);
+    alert('Wystąpił błąd. Spróbuj ponownie później.');
+    window.location.href = 'index.html'
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {

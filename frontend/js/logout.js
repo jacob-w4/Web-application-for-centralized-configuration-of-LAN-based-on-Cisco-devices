@@ -1,14 +1,19 @@
 async function logout() {
-  const response = await fetch(`${window.CONFIG.API_URL}/logout`, {
-    method: 'POST',
-    headers: {
+  try {
+    const response = await fetch(`${window.CONFIG.API_URL}/logout`, {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json'
-    },
-    credentials: 'include'
-  });
-  if (response.ok) {
-    window.location.href = 'index.html'
-  } else {
+      },
+      credentials: 'include'
+    });
+    if (response.ok) {
+      window.location.href = 'index.html'
+    } else {
+      console.error('Błąd logowania:', error);
+      alert('Wystąpił błąd. Spróbuj ponownie później.');
+    }
+  } catch (error) {
     console.error('Błąd logowania:', error);
     alert('Wystąpił błąd. Spróbuj ponownie później.');
   }
