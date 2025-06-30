@@ -1,4 +1,4 @@
-async function check_session() {
+export async function check_session() {
   try {
     const response = await fetch(`${window.CONFIG.API_URL}/me`, {
       method: 'GET',
@@ -26,6 +26,3 @@ async function check_session() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    check_session();
-});
