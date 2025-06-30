@@ -2,6 +2,7 @@ import { renderDevices } from "./pages/devices.js";
 import { renderIconCredits } from "./pages/icon-credits.js";
 import { renderSettings } from "./pages/settings.js";
 import { renderUsers } from "./pages/users.js";
+import { check_session } from "./api/session.js";
 
 const pages = {
     "devices": renderDevices,
@@ -32,4 +33,8 @@ document.querySelectorAll("[data-page]").forEach(link => {
     });
 });
 
-navigate("devices"); // default
+// Main
+document.addEventListener("DOMContentLoaded", () => {
+    check_session();
+    navigate("devices"); // default
+});
