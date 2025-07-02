@@ -136,7 +136,7 @@ function createDeviceRow(devices, main) {
         const deviceWrapper = document.createElement("div");
         const deviceIcon = document.createElement("div");
 
-        deviceWrapper.classList.add("flex", "items-center", "mb-4", "bg-white", "p-4", "rounded", "shadow", "justify-between");
+        deviceWrapper.classList.add("flex", "items-center", "mb-6", "bg-white", "p-4", "rounded", "shadow", "justify-between", "cursor-pointer", "hover:bg-gray-100");
         
 
         const icons = {
@@ -192,8 +192,8 @@ function createDeviceRow(devices, main) {
             "rounded-md", "bg-gray-600", "py-2", "px-3", "text-sm/6", "font-semibold", "text-white", "shadow-xs", "hover:bg-gray-500", "focus-visible:outline-2", 
             "focus-visible:outline-offset-2", "focus-visible:outline-gray-600"
         );
-        deleteBtn.classList.add("rounded-md", "bg-red-600", "py-2", "px-3", "text-sm/6", "font-semibold", "text-white", "shadow-xs", "hover:bg-red-500", 
-            "focus-visible:outline-2", "focus-visible:outline-offset-2", "focus-visible:outline-red-600"
+        deleteBtn.classList.add("rounded-md", "bg-red-400", "py-2", "px-3", "text-sm/6", "font-semibold", "text-white", "shadow-xs", "hover:bg-red-500", 
+            "focus-visible:outline-2", "focus-visible:outline-offset-2", "focus-visible:outline-red-400"
         );
 
         buttonWrapper.appendChild(configBtn);
