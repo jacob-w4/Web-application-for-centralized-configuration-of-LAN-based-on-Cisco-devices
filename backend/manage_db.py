@@ -16,3 +16,12 @@ with app.app_context():
                  password=app.config['AD_PASSW'],
                  permission='admin')
     admin.save()
+
+    # Create device types
+    device_types = [{'name': 'router',
+                     'vendor': 'cisco'},
+                    {'name': 'switch',
+                     'vendor': 'cisco'}]
+    for data in device_types:
+        device_type = DeviceType(name=data['name'], vendor=data['vendor'])
+        device_type.save()
