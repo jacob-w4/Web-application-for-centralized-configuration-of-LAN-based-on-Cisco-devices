@@ -33,14 +33,14 @@ def test_login_failed(client):
     assert response.json['msg'] == 'Authentication failed'
 
 
-def test_logout(logged_in_client):
+def test_logout(logged_in_admin_client):
     """
     GIVEN a logged in user
     WHEN the 'api/logout' is requested
     THEN check if logout is successful
     """
 
-    response = logged_in_client.post('api/logout')
+    response = logged_in_admin_client.post('api/logout')
     set_cookie_header = response.headers.get('Set-Cookie')
 
     assert 'access_token_cookie=;' in set_cookie_header
