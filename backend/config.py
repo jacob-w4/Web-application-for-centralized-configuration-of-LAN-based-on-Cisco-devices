@@ -39,6 +39,9 @@ class DevelopmentConfig(Config):
     # Database
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
+    # Flask JWT
+    JWT_COOKIE_CSRF_PROTECT = False
+
 
 
 class ProductionConfig(Config):
