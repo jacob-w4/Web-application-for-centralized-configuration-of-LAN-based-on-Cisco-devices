@@ -27,6 +27,11 @@ class User(db.Model, BaseMixin):
     @classmethod
     def find_by_username(cls, username):
         return cls.query.filter_by(username=username).first()
+    
+    @classmethod
+    def is_admin(cls, username):
+        user = cls.find_by_username(username)
+        return True if user.permission == 'admin' else False
 
     def __repr__(self):
         return '<User %r>' % self.username
