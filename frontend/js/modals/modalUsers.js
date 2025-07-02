@@ -4,7 +4,6 @@ import { closeModal, closeOnBgClick } from "./modalUtils.js";
 
 export function setupAddModal() {
     const modal = document.getElementById("add-user");
-    const modalContent = modal.querySelector(".content-modal");
     const closeBtn = document.getElementById("close-add-user");
     
     // Close modal buttons
@@ -20,6 +19,15 @@ export function setupDeleteModal(user) {
 
     // Close modal buttons
     denyBtn.addEventListener("click", () => closeModal(modal));
+    closeBtn.addEventListener("click", () => closeModal(modal));
+    closeOnBgClick(modal);
+}
+
+export function setupEditModal(user) {
+    const modal = document.getElementById("edit-user");
+    const closeBtn = document.getElementById("close-edit-user");
+
+    // Close modal buttons
     closeBtn.addEventListener("click", () => closeModal(modal));
     closeOnBgClick(modal);
 }
