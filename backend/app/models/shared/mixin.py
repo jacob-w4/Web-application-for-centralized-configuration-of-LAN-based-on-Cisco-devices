@@ -8,3 +8,7 @@ class BaseMixin():
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
