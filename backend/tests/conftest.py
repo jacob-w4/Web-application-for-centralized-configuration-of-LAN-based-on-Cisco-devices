@@ -24,9 +24,7 @@ def client(app):
 
 @pytest.fixture()
 def logged_in_admin_client(client):
-    response = jsonify({'msg': 'Logged In'})
     access_token = create_access_token(identity=os.getenv('ADMIN_USERNAME'))
-    set_access_cookies(response, access_token)
 
     client.set_cookie(
         path='/',
@@ -41,9 +39,7 @@ def logged_in_client(client):
     user = User('testing123', 'test123', 'read')
     user.save()
 
-    response = jsonify({'msg': 'Logged In'})
-    access_token = create_access_token(identity='testing123')
-    set_access_cookies(response, access_token)
+    access_token = create_access_token(identity=user.username)
 
     client.set_cookie(
         path='/',
